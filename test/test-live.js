@@ -15,7 +15,7 @@ const testtxtFile = fs.readFileSync(testtxtPath);
 const testtxtTorrent = fs.readFileSync(path.resolve(__dirname, 'torrents', 'test.txt.torrent'));
 const testtxtParsed = parseTorrent(testtxtTorrent);
 
-test('Seed file and download', (t) => {
+test.d('Seed file and download', (t) => {
   t.plan(9);
 
   let httpServer;

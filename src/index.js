@@ -24,6 +24,7 @@ export default class HTTPBridge extends EventEmitter {
   constructor(opts = {}) {
     super();
     this.torrentPort = opts.torrentPort || 0;
+    this.dhtPort = opts.dhtPort;
     this.torrents = [];
     this.tracker = opts.tracker !== undefined ? opts.tracker : true;
 
@@ -50,7 +51,7 @@ export default class HTTPBridge extends EventEmitter {
     if (opts.dht !== false) {
       // use a single DHT instance for all torrents, so the routing table can be reused
       this.dht = new DHT(extend({ nodeId: this.nodeId }, opts.dht));
-      this.dht.listen(opts.dhtPort);
+      this.dht.listen(this.dhtPort);
     }
 
     debug('new httpbridge (peerId %s, nodeId %s)', this.peerIdHex, this.nodeIdHex);
