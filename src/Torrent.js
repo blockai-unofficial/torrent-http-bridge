@@ -15,6 +15,7 @@ import ut_pex from 'ut_pex';
 import randomIterate from 'random-iterate';
 import parallel from 'run-parallel';
 import HTTPChunkStore from './HTTPChunkStore';
+import uniq from 'uniq';
 
 const MAX_BLOCK_LENGTH = 128 * 1024;
 const PIECE_TIMEOUT = 30000;
@@ -94,6 +95,12 @@ export default class Torrent extends EventEmitter {
   }
 
   _processParsedTorrent(parsedTorrent) {
+    if (global.WEBTORRENT_ANNOUNCE) {
+      parsedTorrent.announce = parsedTorrent.announce.concat(global.WEBTORRENT_ANNOUNCE);
+    }
+
+    uniq(parsedTorrent.announce);
+
     extend(this, parsedTorrent);
     this.magnetURI = parseTorrent.toMagnetURI(parsedTorrent);
     this.torrentFile = parseTorrent.toTorrentFile(parsedTorrent);

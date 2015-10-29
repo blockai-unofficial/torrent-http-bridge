@@ -28,6 +28,8 @@ export default class HTTPBridge extends EventEmitter {
     this.torrents = [];
     this.tracker = opts.tracker !== undefined ? opts.tracker : true;
 
+    this._wrtc = opts.wrtc || global.WRTC;
+
     if (opts.peerId === undefined) {
       this.peerId = new Buffer('-WW' + VERSION_STR + '-' + hat(48), 'utf8');
     } else if (typeof opts.peerId === 'string') {
