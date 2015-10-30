@@ -38,6 +38,7 @@ function randomInt(high) {
 export default class Torrent extends EventEmitter {
   constructor(url, parsedTorrent, client) {
     super();
+    if (!debug.enabled) this.setMaxListeners(0);
     this.url = url;
     this.parsedTorrent = parsedTorrent;
     this.client = client;

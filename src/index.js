@@ -23,6 +23,7 @@ const VERSION_STR = VERSION.match(/([0-9]+)/g).slice(0, 2).map(zeroFill(2)).join
 export default class HTTPBridge extends EventEmitter {
   constructor(opts = {}) {
     super();
+    if (!debug.enabled) this.setMaxListeners(0);
     this.torrentPort = opts.torrentPort || 0;
     this.dhtPort = opts.dhtPort;
     this.torrents = [];
