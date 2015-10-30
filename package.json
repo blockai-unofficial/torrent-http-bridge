@@ -22,10 +22,7 @@
   "keywords": [],
   "author": "Olivier Lalonde <olalonde@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": ""
-  },
-  "homepage": "",
+  "homepage": "https://github.com/blockai/torrent-http-bridge#readme",
   "dependencies": {
     "addr-to-ip-port": "^1.4.2",
     "bitfield": "^1.1.2",
@@ -67,5 +64,15 @@
     "tape": "^4.2.2",
     "webtorrent": "^0.62.3"
   },
-  "version": "0.1.2"
+  "version": "0.1.2",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blockai/torrent-http-bridge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blockai/torrent-http-bridge/issues"
+  }
 }
